@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <title>Developer - Chat</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+
+    <style>
+      html,
+      body,
+      :root {
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main
+      class="h-screen pt-2 pb-4 flex space-y-2 flex-col max-w-4xl px-4 mx-auto"
+    >
+      <form
+        data-join-form
+        class="bg-base-200 p-2 rounded-sm shadow-lg flex items-center justify-center md:justify-between gap-2"
+      >
+        <div class="hidden md:block">
+          <h1 class="text-3xl font-bold">ChatRoom</h1>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <input
+            type="text"
+            data-username
+            name="username"
+            id="username"
+            maxlength="8"
+            placeholder="Username"
+            class="input input-bordered"
+          />
+          <input
+            type="text"
+            data-room
+            name="room"
+            id="room"
+            maxlength="15"
+            placeholder="Enter room"
+            class="input input-bordered"
+          />
+
+          <button class="btn btn-primary">Join</button>
+        </div>
+      </form>
+      <ul
+        class="flex-auto p-2 h-full bg-base-200 overflow-y-auto"
+        data-chat-list
+      ></ul>
+      <div class="bg-base-200 p-2">
+        <div class="flex mb-2 flex-col space-y-2">
+          <div class="flex items-center gap-2">
+            <em>Users: </em>
+            <ul class="flex items-center gap-1" data-user-list></ul>
+          </div>
+          <div class="flex items-center gap-2">
+            <em>Rooms: </em>
+            <ul data-room-list class="flex items-center gap-1"></ul>
+          </div>
+        </div>
+        <form data-message-form>
+          <p data-activity></p>
+          <div class="form-control">
+            <div class="input-group">
+              <input
+                data-message
+                placeholder="Type here..."
+                type="text"
+                name="input"
+                id="input"
+                class="input input-bordered w-full"
+              />
+              <button class="btn btn-square">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-send-horizontal"
+                >
+                  <path d="m3 3 3 9-3 9 19-9Z" />
+                  <path d="M6 12h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
